@@ -1,0 +1,349 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Hanifa & Ali</title>
+    
+    <!-- Tailwind CSS untuk Styling Cepat -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .font-script { font-family: 'Great Vibes', cursive; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Poppins', sans-serif; }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .spin-slow {
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+
+        /* Container simulasi mobile di desktop */
+        @media (min-width: 768px) {
+            .app-wrapper {
+                max-width: 450px;
+                margin: 0 auto;
+                box-shadow: 0 0 50px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+    <div class="app-wrapper relative min-h-screen bg-stone-50 overflow-x-hidden">
+        
+        <!-- AUDIO ELEMENT -->
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- COVER SCREEN -->
+        <div id="coverScreen" class="fixed inset-0 z-[100] flex flex-col items-center justify-between py-16 px-6 bg-cover bg-center transition-transform duration-1000 origin-top"
+             style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000');">
+            
+            <div class="text-center text-white">
+                <p class="tracking-widest uppercase text-xs mb-2">The Wedding Of</p>
+                <h1 class="font-script text-6xl text-emerald-300">Hanifa & Ali</h1>
+            </div>
+
+            <div class="text-center text-white bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 w-full max-w-xs shadow-xl">
+                <p class="text-sm mb-2 opacity-80">Kepada Yth:</p>
+                <h2 id="guestNameDisplay" class="font-serif text-2xl font-bold mb-6 italic">Tamu Undangan</h2>
+                <button onclick="openInvitation()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 rounded-full font-medium flex items-center justify-center gap-2 transition-transform active:scale-95">
+                    <i data-lucide="book-open" class="w-5 h-5"></i> Buka Undangan
+                </button>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="mainContent" class="hidden pb-20">
+            
+            <!-- Hero -->
+            <section class="h-[80vh] flex flex-col items-center justify-center text-center px-6 bg-cover bg-center"
+                     style="background-image: linear-gradient(to bottom, rgba(250,250,249,0.3), rgba(250,250,249,1)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000');">
+                <div class="fade-in-up">
+                    <p class="text-emerald-700 font-medium tracking-widest uppercase mb-4 text-xs">Pernikahan Kami</p>
+                    <h1 class="font-script text-6xl text-stone-800 mb-2">Hanifa & Ali</h1>
+                    <p class="font-serif italic text-stone-600">Sabtu, 13 Juni 2026</p>
+                </div>
+            </section>
+
+            <!-- Couple -->
+            <section class="py-16 px-6 bg-emerald-900 text-stone-50 rounded-t-[3rem] relative -mt-10">
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="font-script text-5xl text-emerald-200">Mempelai</h2>
+                    <p class="text-xs opacity-70 mt-4 leading-relaxed italic">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri..." (Ar-Rum: 21)</p>
+                </div>
+
+                <div class="flex flex-col items-center mb-12 fade-in-up text-center">
+                    <div class="w-32 h-32 rounded-full border-4 border-emerald-200/30 overflow-hidden mb-4 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400" alt="Mempelai Wanita" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-emerald-100">Hanifa Febriana</h3>
+                    <p class="text-sm mt-1">Putri dari Bapak Yahman Subekti (Alm) & Ibu Choiriyah</p>
+                    <p class="text-[10px] uppercase opacity-50 mt-2">Tambakrejo RT 1 RW 3 Purworejo</p>
+                </div>
+
+                <div class="text-center text-4xl font-script text-emerald-300 mb-12 fade-in-up">&</div>
+
+                <div class="flex flex-col items-center fade-in-up text-center">
+                    <div class="w-32 h-32 rounded-full border-4 border-emerald-200/30 overflow-hidden mb-4 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400" alt="Mempelai Pria" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-emerald-100">Ali Maslakhudin</h3>
+                    <p class="text-sm mt-1">Putra dari Bapak Mustahal (Alm) & Ibu Siti Ngaisah (Almh)</p>
+                    <p class="text-[10px] uppercase opacity-50 mt-2">Sabrang RT 26 RW 4 Wonogiri Kajoran Magelang</p>
+                </div>
+            </section>
+
+            <!-- Schedule -->
+            <section class="py-20 px-6 bg-stone-100">
+                <div class="text-center mb-10 fade-in-up">
+                    <h2 class="font-script text-5xl text-emerald-800">Acara</h2>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg border-t-8 border-emerald-600 text-center fade-in-up">
+                    <h3 class="font-serif text-xl font-bold mb-4">Akad & Resepsi</h3>
+                    <div class="flex items-center justify-center gap-2 mb-2 text-emerald-700">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> <span class="text-sm font-semibold">Sabtu, 13 Juni 2026</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 mb-4 text-stone-500">
+                        <i data-lucide="clock" class="w-4 h-4"></i> <span class="text-sm">09:00 WIB - Selesai</span>
+                    </div>
+                    <div class="text-xs text-stone-500 bg-stone-50 p-4 rounded-2xl mb-6">
+                        <p class="font-bold">Kediaman Mempelai Wanita</p>
+                        <p>Tambakrejo RT 1 RW 3 Purworejo</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-2 rounded-full text-xs">
+                        <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Lihat Lokasi
+                    </a>
+                </div>
+            </section>
+
+            <!-- Gift -->
+            <section class="py-20 px-6 text-center bg-white">
+                <div class="fade-in-up">
+                    <i data-lucide="gift" class="w-8 h-8 mx-auto text-emerald-600 mb-4"></i>
+                    <h2 class="font-script text-5xl text-emerald-800 mb-4">Wedding Gift</h2>
+                    <p class="text-sm text-stone-500 mb-8 px-4">Tanda kasih dapat dikirimkan melalui rekening berikut:</p>
+                    <div class="bg-stone-50 p-8 rounded-3xl border border-stone-100 max-w-xs mx-auto">
+                        <p class="font-bold text-lg mb-1">BCA</p>
+                        <p id="accountNumber" class="text-emerald-700 font-serif text-xl tracking-widest mb-1">1234567890</p>
+                        <p class="text-xs text-stone-400 mb-6 uppercase">a.n Hanifa Febriana</p>
+                        <button onclick="copyAccount()" id="copyBtn" class="flex items-center gap-2 mx-auto bg-white border border-emerald-200 px-4 py-2 rounded-full text-xs font-medium text-emerald-700">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin Rekening
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSVP -->
+            <section class="py-20 px-6 bg-emerald-800 text-white rounded-t-[3rem]">
+                <div class="text-center mb-10 fade-in-up">
+                    <h2 class="font-script text-5xl text-emerald-200">Buku Tamu</h2>
+                </div>
+                
+                <form id="rsvpForm" class="bg-white/10 p-6 rounded-3xl mb-10 border border-white/20 fade-in-up">
+                    <input type="text" id="inputName" class="w-full bg-white/10 rounded-xl p-4 mb-4 text-sm outline-none focus:bg-white/20 text-white" placeholder="Nama Anda" required>
+                    <select id="inputPresence" class="w-full bg-white/10 rounded-xl p-4 mb-4 text-sm outline-none text-white appearance-none">
+                        <option value="Hadir" class="text-black">Hadir</option>
+                        <option value="Tidak Hadir" class="text-black">Tidak Hadir</option>
+                    </select>
+                    <textarea id="inputMessage" class="w-full bg-white/10 rounded-xl p-4 mb-4 text-sm outline-none h-32 resize-none focus:bg-white/20 text-white" placeholder="Tulis ucapan & doa..." required></textarea>
+                    <button type="submit" id="submitBtn" class="w-full py-4 bg-emerald-500 hover:bg-emerald-400 rounded-xl font-bold shadow-lg transition-all active:scale-95 disabled:opacity-50">
+                        Kirim Ucapan
+                    </button>
+                </form>
+
+                <div id="wishesContainer" class="space-y-4 max-h-96 overflow-y-auto pr-2 custom-scroll fade-in-up">
+                    <p class="text-center text-xs opacity-50 italic">Memuat ucapan...</p>
+                </div>
+            </section>
+
+            <footer class="bg-emerald-950 text-emerald-200 text-center py-16">
+                <p class="font-script text-4xl mb-4 text-emerald-400">Terima Kasih</p>
+                <p class="text-sm opacity-60 px-8 mb-8">Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu berkenan hadir untuk memberikan doa restu.</p>
+                <p class="text-lg font-serif tracking-widest uppercase">Hanifa & Ali</p>
+            </footer>
+        </div>
+
+        <!-- Music Button -->
+        <button id="musicToggle" onclick="toggleAudio()" class="fixed bottom-6 right-6 z-40 p-3 rounded-full shadow-xl text-white bg-gray-500 hidden transition-all active:scale-90">
+            <i id="musicIcon" data-lucide="pause" class="w-5 h-5"></i>
+        </button>
+
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // --- KONFIGURASI FIREBASE ---
+        // Tempel config Anda di sini
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // --- GLOBAL VARIABLES ---
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        // --- GUEST NAME FROM URL ---
+        const params = new URLSearchParams(window.location.search);
+        const to = params.get('to');
+        if (to) {
+            document.getElementById('guestNameDisplay').innerText = to;
+            document.getElementById('inputName').value = to;
+        }
+
+        // --- UI FUNCTIONS ---
+        window.openInvitation = () => {
+            document.getElementById('coverScreen').style.transform = 'translateY(-100%)';
+            document.getElementById('mainContent').classList.remove('hidden');
+            musicToggle.classList.remove('hidden');
+            
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                updateMusicUI();
+            }).catch(() => console.log("Autoplay blocked"));
+            
+            initAnimations();
+        };
+
+        window.toggleAudio = () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                isPlaying = false;
+            } else {
+                bgMusic.play();
+                isPlaying = true;
+            }
+            updateMusicUI();
+        };
+
+        function updateMusicUI() {
+            musicToggle.className = `fixed bottom-6 right-6 z-40 p-3 rounded-full shadow-xl text-white transition-all ${isPlaying ? 'bg-emerald-600 spin-slow' : 'bg-gray-500'}`;
+            musicIcon.setAttribute('data-lucide', isPlaying ? 'music' : 'pause');
+            lucide.createIcons();
+        }
+
+        window.copyAccount = () => {
+            const accNum = document.getElementById('accountNumber').innerText;
+            navigator.clipboard.writeText(accNum);
+            const btn = document.getElementById('copyBtn');
+            btn.innerHTML = `<i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Tersalin`;
+            lucide.createIcons();
+            setTimeout(() => {
+                btn.innerHTML = `<i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin Rekening`;
+                lucide.createIcons();
+            }, 2000);
+        };
+
+        function initAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+        }
+
+        // --- FIREBASE LOGIC ---
+        const rsvpForm = document.getElementById('rsvpForm');
+        const wishesContainer = document.getElementById('wishesContainer');
+
+        // Submit Ucapan
+        rsvpForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = "Mengirim...";
+
+            try {
+                await addDoc(collection(db, "wishes"), {
+                    name: document.getElementById('inputName').value,
+                    presence: document.getElementById('inputPresence').value,
+                    message: document.getElementById('inputMessage').value,
+                    timestamp: serverTimestamp()
+                });
+                document.getElementById('inputMessage').value = "";
+            } catch (err) {
+                alert("Error: " + err.message);
+            }
+            btn.disabled = false;
+            btn.innerText = "Kirim Ucapan";
+        });
+
+        // Realtime Listen Ucapan
+        const q = query(collection(db, "wishes"), orderBy("timestamp", "desc"));
+        onSnapshot(q, (snapshot) => {
+            wishesContainer.innerHTML = "";
+            if (snapshot.empty) {
+                wishesContainer.innerHTML = '<p class="text-center text-xs opacity-50 italic">Belum ada ucapan. Jadilah yang pertama!</p>';
+                return;
+            }
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                const div = document.createElement('div');
+                div.className = "bg-white/95 text-stone-800 p-5 rounded-2xl shadow-sm";
+                div.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-bold text-sm">${data.name}</h4>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full font-semibold ${data.presence === 'Hadir' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}">
+                            ${data.presence}
+                        </span>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed italic">"${data.message || ""}"</p>
+                `;
+                wishesContainer.appendChild(div);
+            });
+        });
+
+        // Initial Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
+```
